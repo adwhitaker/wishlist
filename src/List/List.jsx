@@ -13,7 +13,6 @@ export const List = () => {
         const loadList = async () => {
             try {
                 const newList = await fetchList(groupId, listId)
-                console.log('list', newList)
                 setList(newList)
             } catch (e) {
 
