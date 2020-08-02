@@ -1,0 +1,11 @@
+{
+  "id": "guid-xxx-xxx-xxx",
+  "name": "Alex's List",
+  "createTimestamp": "",
+  "lastUpdate": "",
+  "creator": {
+    "name": "Alex",
+    "id": "guid-xxx-xxx-xxx"
+  },
+  "items": []
+}
