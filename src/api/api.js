@@ -1,11 +1,21 @@
-const items = {
+let items = {
     '1': {
         id: '1',
         name: 'Legos',
+        createdTimestamp: new Date().getTime(),
+        lastUpdated: new Date().getTime(),
+        purchased: {
+            userId: "1",
+            name: "Alex",
+            timestamp: new Date().getTime()
+        }
     },
     '2': {
         id: '2',
         name: 'coffee',
+        createdTimestamp: new Date().getTime(),
+        lastUpdated: new Date().getTime(),
+        purchased: null
     },
 }
 
@@ -14,11 +24,17 @@ const lists = {
         id: '1',
         name: 'Alex\'s List',
         items: Object.values(items),
+        created: {
+            userId: '1',
+        },
     },
     '2': {
         id: '2',
         name: 'Mitchell\'s List',
         items: Object.values(items),
+        created: {
+            userId: '2',
+        },
     },
 }
 
@@ -67,6 +83,28 @@ export const fetchList = (groupId, listId) => {
     return Promise.resolve({
         ...lists[listId],
         groupId,
-        groupName: groups[groupId].name
+        groupName: groups[groupId].name,
+    })
+}
+
+
+export const addItem = (groupId, listId, item) => {
+
+    const newItem = {
+        id: (Object.keys(items).length + 1).toString(),
+        ...item
+    }
+
+    items[newItem.id] = newItem
+
+    return Promise.resolve({
+        ...lists[listId],
+        items: [
+            ...lists[listId].items,
+            newItem
+        ],
+        groupId,
+        groupName: groups[groupId].name,
+
     })
 }

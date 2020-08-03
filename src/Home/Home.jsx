@@ -32,9 +32,8 @@ export const Home = () => {
 
     return (
         <div>
-            <h1>Home</h1>
+            <h1>{firstName}'s Groups</h1>
             <section>
-                <h2>{firstName}'s Groups</h2>
                 <ul>
                     {groups.map(({ id, name }) => (
                         <li key={id}>

@@ -35,7 +35,7 @@ export const Group = () => {
         <Fragment>
             <h1>{name}</h1>
             <section>
-                <Link to={ROUTES.HOME}>Home</Link>
+                <Link to={ROUTES.HOME}>Return to Group List</Link>
                 <GroupLists
                     groupId={id}
                     lists={lists}

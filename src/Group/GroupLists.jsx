@@ -1,6 +1,6 @@
 import React from 'react'
 import { ROUTES } from '../Navigator/routes'
-import Link from 'react-router-dom/modules/Link'
+import {Link}from 'react-router-dom'
 
 
 export const GroupLists = ({ groupId, lists }) => {
