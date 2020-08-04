@@ -6,6 +6,7 @@ import { initialListState, listReducer } from './listReducer'
 import { addItem, fetchList } from '../api/api'
 import LoadingIndicator from '../shared/LoadingIndicator'
 import ListItem from './ListItem'
+import ListAddItem from './ListAddItem'
 
 const loadList = async (dispatch, groupId, listId) => {
     try {
@@ -16,9 +17,9 @@ const loadList = async (dispatch, groupId, listId) => {
     }
 }
 
-const onAddItemClick = async (dispatch, groupId, listId) => {
+const onAddItemClick = async (dispatch, groupId, listId, item) => {
     try {
-        const list = await addItem(groupId, listId, { name: 'Tea' })
+        const list = await addItem(groupId, listId, { name: item })
         dispatch({ type: listActions.LIST_RESPONSE, list })
 
     } catch (e) {
@@ -50,7 +51,11 @@ export const List = () => {
                 </ul>
             </section>
             <div>
-                <button onClick={() => onAddItemClick(dispatch, groupId, listId)}>Add Item</button>
+                <ListAddItem
+                    onAddItem={newItem => {
+                        onAddItemClick(dispatch, groupId, listId, newItem)
+                    }}
+                />
             </div>
         </React.Fragment>
     )

@@ -16,7 +16,6 @@ const sortByPurchased = items => {
 }
 
 export const initialListState = {
-    isLoading: false,
     list: null,
     errors: [],
 }
@@ -37,5 +36,7 @@ export const listReducer = (state, action = {}) => {
                 ...state,
                 errors: action.errors,
             }
+        default:
+            return state
     }
 }
